@@ -3,7 +3,7 @@ import { createData } from "./src/information/create-data";
 
 const boton = document.querySelector(".intro-boton");
 boton.addEventListener('click', (e) => {
-    updateValue(0,0);
+    updateValue(1,1);
 });
 const button = document.querySelector(".intro-button");
 button.addEventListener('click', (e) => {

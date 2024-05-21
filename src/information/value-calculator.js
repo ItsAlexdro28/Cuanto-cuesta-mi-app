@@ -100,7 +100,7 @@ export const updateValue = async (page, buttonId) => {
             break;
         case page == "6":
             if (buttonId == "1") {
-                price += 1000000 * quality;
+                price += 2000000 * quality;
                 userOptions.push({"web": "Si"}); 
             } else if (buttonId == "2") {
                 price += 0;
