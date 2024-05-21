@@ -11,5 +11,7 @@ export const createData = async () => {
         "finalValue": 0,
         "options": []
     };
+    const priceHistory = []
     sessionStorage.setItem('user', JSON.stringify(userBlank));
+    sessionStorage.setItem('history', JSON.stringify(priceHistory));
 }
