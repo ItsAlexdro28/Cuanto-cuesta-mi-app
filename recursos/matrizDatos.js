@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit";
-
+//ese es mi objeto
 //Crear el objeto con la pregunta, como si fuera todo un conjunto 
 export const listaPreguntas = [
     {
@@ -16,10 +16,11 @@ export const listaPreguntas = [
         {texto: "Aplicación Android", imagen: ('../images/pag2-img1.png')},
         {texto: "Aplicación iOS", imagen: ('../images/pag2-img2.png')},
         {texto: "Aplicación Windows Phone", imagen: ('../images/pag2-img3.png')},
-        {texto: "Aplicación para escritorio", imagen: ('../images/pag2-img4.png'), opciones: [
-                {texto: "SPA", imagen: ('../images/pagDesk-img1.webp')},
-                {texto: "SPA", imagen: ('../images/pagDesk-img1.webp')},
-                {texto: "SPA", imagen: ('../images/pagDesk-img1.webp')}
+        {texto: "Aplicación Android + iOS", imagen: ('../images/pag2-img4.png')},
+        {texto: "Aplicación para escritorio", imagen: ('../images/pag2-img5.webp'), subOpciones: [
+                {texto: "SPA", imagen: ('../images/pagDesk-img2.webp')},
+                {texto: "PWA", imagen: ('../images/pagDesk-img1.webp')},
+                {texto: "NATIVE", imagen: ('../images/pagDesk-img3.webp')},
             ]
         },
         ]
