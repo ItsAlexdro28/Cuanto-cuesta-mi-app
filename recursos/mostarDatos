@@ -1,0 +1,37 @@
+// import { LitElement, html } from "lit";
+// //Generar botones de opciones, tomando el objeto como argumento y genera boton para cada opcion
+// const generar = ({opciones}) => {
+//     let respuesta = " ";
+
+//     for (let i = 0; i < opciones.length; ++i) {
+//         const pregunta = opciones[i];
+//         respuesta += `
+//             <button>${pregunta}</button>
+//         `;
+//         }
+//     return respuesta;
+// }
+
+// //Definir un aclase que extienda LitElement
+
+// // ~  Con export default, cuando importemos este módulo en otro archivo JavaScript, esta clase será la que se importe por defecto.~
+// export default class Question extends LitElement {
+//     constructor() {
+//         super()
+//     }
+//     content= html `
+//         <div>
+//             <h2>${pregunta1.pregunta}</h2>
+//             ${generar(pregunta1)}
+//         </div>
+//     `;
+//     render(){
+//         return this.content;
+//     }
+// }
+
+// //Registarr componente web
+// customElements.define("elemento-generar-clase-Question")
+
+
+// window.customElements.define('my-element', MyElement)
