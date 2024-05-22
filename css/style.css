@@ -154,3 +154,11 @@ body{
 .resultado-componente {
     color:green
 }
+.red{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    padding: .5em .6em;
+    transition: background .2s ease-in-out,border-color .2s ease-in-out;
+    color: #fff;
+    border-radius: 3px;
+}

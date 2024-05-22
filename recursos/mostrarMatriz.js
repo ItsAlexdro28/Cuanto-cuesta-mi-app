@@ -68,8 +68,6 @@ class ComponentesCuestionario extends LitElement {
       `;
     }
 
-
-
     if (this.cuestionarioCompletado) {
       return html `
       <style>
