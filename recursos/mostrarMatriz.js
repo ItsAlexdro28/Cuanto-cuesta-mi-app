@@ -1,5 +1,8 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { listaPreguntas } from '../recursos/matrizDatos.js';
+import { updateValue } from '../src/information/value-calculator.js';
+import { createData } from  '../src/information/create-data.js';
+import { deletePrevValue } from '../src/information/delete-value.js';
 
 class ComponentesCuestionario extends LitElement {
   static properties = {
@@ -22,16 +25,19 @@ class ComponentesCuestionario extends LitElement {
   }
   getLast() {
     if (this.indexCuestionario > 0) {
+      deletePrevValue(this.indexCuestionario + 1);
       this.indexCuestionario--;
     }
   }
   empezarCuestionario(){
+    createData();
     this.enIncio = false;
   }
   siguiente(opcion) {
     if (opcion.subOpciones) {
       this.subOpciones = opcion.subOpciones; // Mostrar subopciones en lugar de avanzar
     } else {
+      updateValue(this.indexCuestionario + 1, opcion.id);
       this.indexCuestionario++;
       this.subOpciones = null; // Reiniciar subopciones
       if (this.indexCuestionario >= listaPreguntas.length) {
