@@ -1,6 +1,8 @@
 import { LitElement, html } from "lit";
+
 //ese es mi objeto
 //Crear el objeto con la pregunta, como si fuera todo un conjunto 
+
 export const listaPreguntas = [
     {
     preguntaTitulo:"¿Qué nivel de calidad estás buscando?",
