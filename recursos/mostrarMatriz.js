@@ -45,10 +45,14 @@ class ComponentesCuestionario extends LitElement {
   renderOpciones(opciones) {
     return opciones.map(
       (opcion) => html `
-        <li @click=${() => this.siguiente(opcion)}>
-          <img src=${opcion.imagen} alt="Imagen opción">
-          <span>${opcion.texto}</span>
-        </li>
+        <div @click=${() => this.siguiente(opcion)} class="opcion">
+          <div class="tarjeta">
+            <img src=${opcion.imagen} alt="Imagen opción" class="imagenOpcion">
+            <br>
+            <span>${opcion.texto}</span>
+          </div>
+        </div>
+
       `
     );
   }
@@ -59,25 +63,49 @@ class ComponentesCuestionario extends LitElement {
       <style>
         @import "../css/style.css";
       </style>
+    <section id="pagina1">
       <div class="intro">
           <img src="images/intro.png" class="imagen" id="imagen-intro">
-          <h1 class="titulo">¿Cuánto cuesta desarrollar mi app?</h1>
+          <h1 class="titulo">¿Cuánto cuesta desarrollar mi <strong class="app">app</strong>?</h1>
           <h2 class="subtitulo">Calcula de forma rápida el costo para crear tu app, contestando estas sencillas preguntas.</h2>
           <button @click=${this.empezarCuestionario} class="intro-boton">EMPEZAR</button>
       </div>
-      `;
+    </section>
+      `
     }
-
-
 
     if (this.cuestionarioCompletado) {
       return html `
       <style>
         @import "../css/style.css";
       </style>
-      <div class="resultado-componente">
-        <h2>¡Cuestionario completado!</h2>
+      <section class="ultimaPagina">
+      <p>Bien! ¡Hemos terminado!</p>
+      <h3>¡Compártenos si te ha gustado!</h3>
+      <div class="redesSociales">
+        <div id="facebook" class="red">
+          <img src="images/facebook-removebg-preview.png" class="icon">
+          <p class="textoPequeño">Share</p>
+        </div>
+        <div id="link" class="red">
+          <img src="images/LinkedIn.webp" class="icon">
+          <p>Share</p>
+        </div>
+        <div id="google" class="red">
+          <img src="images/google.png" class="icon">
+          <p>Google +</p>
+        </div>
+        <div id="twitter" class="red">
+          <img src="images/twitter.webp" class="icon">
+          <p>Tweet</p>
+        </div>
+
       </div>
+
+      <h1>El costo estimado de tu app es</h1>
+      <h1 id="costo">COSTO</h1>
+
+    </section>
       `;
     } else {
       const pregunta = listaPreguntas[this.indexCuestionario];
@@ -85,15 +113,21 @@ class ComponentesCuestionario extends LitElement {
       <style>
         @import "../css/style.css";
       </style>
-      <div>
-      <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0}>Anterior</button>
-      <p id="numeroPagina">${this.getProgress()}</p>
-        <h2>${pregunta.preguntaTitulo}</h2>
-        <ul>
+      <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
+      <p class="numeroPagina">${this.getProgress()}</p>
+
+      <div class="tarjetaContainer">
+
+        <div class="tituloTarjeta">
+          <h2>${pregunta.preguntaTitulo}</h2>
+        </div>
+
+        <div class="cargaDatos">
           ${this.renderOpciones(this.subOpciones || pregunta.opciones)}
-        </ul>
+        </div>
+          
       </div>
-    `
+      `
       ;}
   }
 }

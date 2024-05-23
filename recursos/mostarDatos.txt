@@ -1,0 +1,116 @@
+// import { LitElement, html } from "lit";
+// //Generar botones de opciones, tomando el objeto como argumento y genera boton para cada opcion
+// const generar = ({opciones}) => {
+//     let respuesta = " ";
+
+//     for (let i = 0; i < opciones.length; ++i) {
+//         const pregunta = opciones[i];
+//         respuesta += `
+//             <button>${pregunta}</button>
+//         `;
+//         }
+//     return respuesta;
+// }
+
+// //Definir un aclase que extienda LitElement
+
+// // ~  Con export default, cuando importemos este módulo en otro archivo JavaScript, esta clase será la que se importe por defecto.~
+// export default class Question extends LitElement {
+//     constructor() {
+//         super()
+//     }
+//     content= html `
+//         <div>
+//             <h2>${pregunta1.pregunta}</h2>
+//             ${generar(pregunta1)}
+//         </div>
+//     `;
+//     render(){
+//         return this.content;
+//     }
+// }
+
+// //Registarr componente web
+// customElements.define("elemento-generar-clase-Question")
+
+
+
+
+// window.customElements.define('my-element', MyElement)
+
+
+.anterior-boton{
+    background-color: transparent;
+    color: white;
+    border: none;
+
+}
+#numeroPagina{
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    box-sizing: inherit;
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2em;
+}
+
+
+
+////////////////////
+      <section id="preguntas">
+        
+          <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
+          <p id="numeroPagina">${this.getProgress()}</p>
+        
+        <div class="opcion">
+          <h2>${pregunta.preguntaTitulo}</h2>
+          ${this.renderOpciones(this.subOpciones || pregunta.opciones)}
+        </div>
+      </section>
+    `
+
+
+renderOpciones(opciones) {
+    return opciones.map(
+      (opcion) => html `
+        <div @click=${() => this.siguiente(opcion)} class="opcion">
+          <div class="tarjeta">
+            <img src=${opcion.imagen} alt="Imagen opción" class="imagenOpcion">
+            <br>
+            <span>${opcion.texto}</span>
+          </div>
+        </div>
+
+      `
+    );
+  }
+
+      const pregunta = listaPreguntas[this.indexCuestionario];
+      return html `
+      <style>
+        @import "../css/style.css";
+      </style>
+      <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
+      <p id="numeroPagina">${this.getProgress()}</p>
+
+      <div class="tarjetaContainer">
+
+        <div class="tituloTarjeta">
+          <h2>${pregunta.preguntaTitulo}</h2>
+        </div>
+
+        <div class="cargaDatos">
+          ${this.renderOpciones(this.subOpciones || pregunta.opciones)}
+        </div>
+          
+      </div>
+      `
+      ;}
+  
