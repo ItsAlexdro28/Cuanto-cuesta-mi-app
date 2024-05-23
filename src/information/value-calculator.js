@@ -184,13 +184,13 @@ export const updateValue = async (page, buttonId) => {
             break;
         case page == "10":
             if (buttonId == "1") {
-                userOptions.push({"State": "Idea"});
+                userOptions.push({"state": "Idea"});
             } else if (buttonId == "2") {
-                userOptions.push({"State": "Boceto"});
+                userOptions.push({"state": "Boceto"});
             } else if (buttonId == "3") {
-                userOptions.push({"State": "Desarrollo"});
+                userOptions.push({"state": "Desarrollo"});
             } else if (buttonId == "4") {
-                userOptions.push({"State": "Completo"});
+                userOptions.push({"state": "Completo"});
             }
             break;
     }

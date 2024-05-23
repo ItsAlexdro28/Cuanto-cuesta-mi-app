@@ -1,6 +1,8 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { listaPreguntas } from '../recursos/matrizDatos.js';
 import { updateValue } from "../src/information/value-calculator";
+import { createData } from "../src/information/create-data.js"
+import { deletePrevValue } from "../src/information/delete-value.js"
 
 class ComponentesCuestionario extends LitElement {
   static properties = {
