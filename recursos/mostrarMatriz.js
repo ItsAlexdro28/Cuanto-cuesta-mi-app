@@ -1,8 +1,9 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { listaPreguntas } from '../recursos/matrizDatos.js';
-import { updateValue } from "../src/information/value-calculator";
+import { updateValue, returnValor } from "../src/information/value-calculator";
 import { createData } from "../src/information/create-data.js"
 import { deletePrevValue } from "../src/information/delete-value.js"
+
 
 class ComponentesCuestionario extends LitElement {
   static properties = {
@@ -21,6 +22,7 @@ class ComponentesCuestionario extends LitElement {
     this.enIncio = true;
     this.precioTotal= 0;
     this.actualizarPrecioFinal ();
+    this.resultado =0;
   }
 
   getProgress() {
@@ -33,19 +35,28 @@ class ComponentesCuestionario extends LitElement {
     }
   }
   async actualizarPrecioFinal(){
-    const userData = await updateValue();
-    this.precioTotal=userDate.finalValue;
+    try{
+      this.resultado = await returnValor();
+      console.log(resultado)
+    }catch(error){
+      console.log(error)
+    }
+
   }
 
   empezarCuestionario(){
     createData();
+    this.actualizarPrecioFinal()
     this.enIncio = false;
+
   }
   siguiente(opcion) {
     if (opcion.subOpciones) {
       this.subOpciones = opcion.subOpciones; // Mostrar subopciones en lugar de avanzar
     } else {
       updateValue(this.indexCuestionario + 1, opcion.id);
+      console.log(updateValue)
+      this.actualizarPrecioFinal();
       this.indexCuestionario++;
       this.subOpciones = null; // Reiniciar subopciones
       if (this.indexCuestionario >= listaPreguntas.length) {
@@ -117,8 +128,7 @@ class ComponentesCuestionario extends LitElement {
       </div>
 
       <h1>El costo estimado de tu app es</h1>
-      <h1 id="costo">COSTO</h1>
-      <div class="precio-final">Precio final: ${this.precioFinal}</div>
+      <h1 id="costo">${this.resultado}</h1>
 
       <a href="./formulario.html" class="linkFormulario">Completa este formulario</a>
 
@@ -132,7 +142,7 @@ class ComponentesCuestionario extends LitElement {
       </style>
       <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
       <p class="numeroPagina">${this.getProgress()}</p>
-      <p class="contador"></p>
+      <p class="precio">${this.resultado} COP</p>
 
       <div class="tarjetaContainer">
 

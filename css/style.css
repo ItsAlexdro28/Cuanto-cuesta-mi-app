@@ -170,6 +170,7 @@ body {
     height: 150px;
     
 }
+
 .cargaDatos{
     display: flex;
     gap:60px
@@ -186,10 +187,11 @@ body {
     width: 300px;
     height: 250px;
 }
-.cargaDatos :hover{
+.opcion:hover{
     background-color: rgba(134, 131, 131, 0.205);
-    
+    transition: 0.5s;
     transform: translateY(-10px);
+    pointer-events: all;
 }
 .tarjetaContainer{
     display: flex;
@@ -263,4 +265,19 @@ a{
     text-decoration: none;
     color: white;
     margin-top: 5px;
+}
+
+@media(max-width:700px) {
+    #pagina1{
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .cargaDatos{
+        flex-direction: column;
+    }
+}
+.precio{
+    position: absolute;
+    right:35px;
+    top:20px;
 }

@@ -200,3 +200,10 @@ export const updateValue = async (page, buttonId) => {
     sessionStorage.setItem('history', JSON.stringify(history));
     console.log(userData);
 }  
+export const returnValor =async()=>{
+    let storedUserData = sessionStorage.getItem('user');
+    let userData = JSON.parse(storedUserData);
+    let price = userData.finalValue;
+    console.log(price)
+    return price 
+}
