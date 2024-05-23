@@ -9,9 +9,9 @@ let quality = 0;
 export const updateValue = async (page, buttonId) => {
     //con base en la pagina y el id del boton precionado, calcula el valor final y guarda la informacion en el sessionstorage
     let storedUserData = sessionStorage.getItem('user'); //este valor exportar
-    let storedHisrory =  sessionStorage.getItem('history'); 
+    let storedHistory =  sessionStorage.getItem('history'); 
     let userData = JSON.parse(storedUserData); //este valor exportar
-    let history = JSON.parse(storedHisrory);
+    let history = JSON.parse(storedHistory);
     //userData.finalValue = Number(userData.finalValue) + 1;
     let price = userData.finalValue; //este valor exportar
     let userOptions = userData.options; 

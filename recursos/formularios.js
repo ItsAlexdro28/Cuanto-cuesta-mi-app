@@ -15,11 +15,11 @@ export class pageForm extends LitElement {
         return html`
             <form class="customerForm">
                 <div class="customerName">
-                    <label for="Name" class="name"><b>Name</b></label>
+                    <label for="Name" class="name"><b>Nombre</b></label>
                     <input type="text" id="Name" name="Name">
                 </div>
                 <div class="customerLastName">
-                    <label for="lastName" class="lastName"><b>lastName</b></label>
+                    <label for="lastName" class="lastName"><b>Apellido</b></label>
                     <input type="text" id="lastName" name="lastName">
                 </div>
                 <div class="customerEmail">
@@ -27,16 +27,19 @@ export class pageForm extends LitElement {
                     <input type="email" id="email" name="email">
                 </div>
                 <div class="customerCountry">
-                    <label for="country" class="country"><b>Country</b></label>
+                    <label for="country" class="country"><b>Pais</b></label>
                     <input type="text" id="country" name="country">
                 </div>
                 <div class="customerCity">
-                    <label for="city" class="city"><b>City</b></label>
+                    <label for="city" class="city"><b>Ciudad</b></label>
                     <input type="text" id="city" name="city">
+                </div>
+                <div class="customerCity">
+                    <label for="phone" class="phone"><b>Telefono</b></label>
+                    <input type="text" id="phone" name="phone">
                 </div>
                 <button class="submit">Submit</button>
             </form>
-    
     `}
 
     firstUpdated(){
@@ -46,16 +49,18 @@ export class pageForm extends LitElement {
             const customerForm=this.shadowRoot.querySelector('.customerForm');
             const data = Object.fromEntries(new FormData(customerForm).entries());
             const customerData = JSON.parse(JSON.stringify(data));
-            const {Name,lastName,email,country,city}=customerData;
+            const {Name,lastName,email,country,city,phone}=customerData;
             const customerInfo ={
                 Name:Name,
                 Lastname:lastName,
                 Email:email,
                 Country:country,
                 City:city,
-            }
-            console.log(customerInfo)
-            
+                Phone:phone
+            };
+            let storedUserData = sessionStorage.getItem('user');
+            let userData = JSON.parse(storedUserData);
+            sessionStorage.setItem('user', JSON.stringify(customerInfo));
         })
     }
 
