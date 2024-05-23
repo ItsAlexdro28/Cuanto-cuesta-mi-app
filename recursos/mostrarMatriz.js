@@ -1,12 +1,14 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { listaPreguntas } from '../recursos/matrizDatos.js';
+import { updateValue } from "../src/information/value-calculator";
 
 class ComponentesCuestionario extends LitElement {
   static properties = {
     indexCuestionario: { type: Number },
     cuestionarioCompletado: { type: Boolean },
     subOpciones: { type: Array },
-    enIncio:{type: Boolean}
+    enIncio:{type: Boolean},
+    precioTotal: { type: Number }
   };
 
   constructor() {
@@ -15,6 +17,8 @@ class ComponentesCuestionario extends LitElement {
     this.cuestionarioCompletado = false;
     this.subOpciones = null; // Nueva propiedad para manejar subopciones
     this.enIncio = true;
+    this.precioTotal= 0;
+    this.actualizarPrecioFinal ();
   }
 
   getProgress() {
@@ -25,6 +29,11 @@ class ComponentesCuestionario extends LitElement {
       this.indexCuestionario--;
     }
   }
+  async actualizarPrecioFinal(){
+    const userData = await updateValue();
+    this.precioTotal=userDate.finalValue;
+  }
+
   empezarCuestionario(){
     this.enIncio = false;
   }
@@ -44,7 +53,7 @@ class ComponentesCuestionario extends LitElement {
 
   renderOpciones(opciones) {
     return opciones.map(
-      (opcion) => html `
+      (opcion) => html /*HTML*/`
         <div @click=${() => this.siguiente(opcion)} class="opcion">
           <div class="tarjeta">
             <img src=${opcion.imagen} alt="Imagen opción" class="imagenOpcion">
@@ -59,7 +68,7 @@ class ComponentesCuestionario extends LitElement {
 
   render() {
     if(this.enIncio){
-      return html `
+      return html /*HTML*/ `
       <style>
         @import "../css/style.css";
       </style>
@@ -75,7 +84,7 @@ class ComponentesCuestionario extends LitElement {
     }
 
     if (this.cuestionarioCompletado) {
-      return html `
+      return html  /*HTML*/ `
       <style>
         @import "../css/style.css";
       </style>
@@ -85,36 +94,40 @@ class ComponentesCuestionario extends LitElement {
       <div class="redesSociales">
         <div id="facebook" class="red">
           <img src="images/facebook-removebg-preview.png" class="icon">
-          <p class="textoPequeño">Share</p>
+          <a href="https://www.facebook.com/?locale=es_LA">Share</a>
         </div>
         <div id="link" class="red">
           <img src="images/LinkedIn.webp" class="icon">
-          <p>Share</p>
+          <a href="https://co.linkedin.com/">Share</a>
         </div>
         <div id="google" class="red">
           <img src="images/google.png" class="icon">
-          <p>Google +</p>
+          <a href="https://www.google.com/?hl=es">Google +</a>
         </div>
         <div id="twitter" class="red">
           <img src="images/twitter.webp" class="icon">
-          <p>Tweet</p>
+          <a href="https://x.com/?lang=es">Tweet</a>
         </div>
 
       </div>
 
       <h1>El costo estimado de tu app es</h1>
       <h1 id="costo">COSTO</h1>
+      <div class="precio-final">Precio final: ${this.precioFinal}</div>
+
+      <a href="./formulario.html" class="linkFormulario">Completa este formulario</a>
 
     </section>
       `;
     } else {
       const pregunta = listaPreguntas[this.indexCuestionario];
-      return html `
+      return html /*HTML*/ `
       <style>
         @import "../css/style.css";
       </style>
       <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
       <p class="numeroPagina">${this.getProgress()}</p>
+      <p class="contador"></p>
 
       <div class="tarjetaContainer">
 

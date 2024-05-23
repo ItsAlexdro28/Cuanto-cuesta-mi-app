@@ -260,3 +260,8 @@ body {
 .textoPequeño{
     font-size: 12px;
 }
+a{
+    text-decoration: none;
+    color: white;
+    margin-top: 5px;
+}
