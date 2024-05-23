@@ -26,6 +26,7 @@ class ComponentesCuestionario extends LitElement {
   }
   getLast() {
     if (this.indexCuestionario > 0) {
+      deletePrevValue(this.indexCuestionario + 1);
       this.indexCuestionario--;
     }
   }
@@ -35,12 +36,14 @@ class ComponentesCuestionario extends LitElement {
   }
 
   empezarCuestionario(){
+    createData();
     this.enIncio = false;
   }
   siguiente(opcion) {
     if (opcion.subOpciones) {
       this.subOpciones = opcion.subOpciones; // Mostrar subopciones en lugar de avanzar
     } else {
+      updateValue(this.indexCuestionario + 1, opcion.id);
       this.indexCuestionario++;
       this.subOpciones = null; // Reiniciar subopciones
       if (this.indexCuestionario >= listaPreguntas.length) {
