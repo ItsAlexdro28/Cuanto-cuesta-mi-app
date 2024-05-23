@@ -266,6 +266,11 @@ a{
     color: white;
     margin-top: 5px;
 }
+.precio{
+    position: absolute;
+    right:35px;
+    top:20px;
+}
 
 @media(max-width:700px) {
     #pagina1{
@@ -274,10 +279,18 @@ a{
     }
     .cargaDatos{
         flex-direction: column;
+        gap:10px;
     }
-}
-.precio{
-    position: absolute;
-    right:35px;
-    top:20px;
+    tarjetaContainer{
+        justify-content: center; /* Centra horizontalmente */
+        
+        height: 50vh; /* Esto hace que la altura de la tarjeta sea el 50% del alto de la pantalla */
+        
+        font-size: 17px;
+    }
+    .tarjeta{
+        margin-top: 25px;
+        width: 250px;
+        height: 200px;
+    }
 }

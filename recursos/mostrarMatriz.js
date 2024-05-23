@@ -141,24 +141,24 @@ class ComponentesCuestionario extends LitElement {
     } else {
       const pregunta = listaPreguntas[this.indexCuestionario];
       return html /*HTML*/ `
-      <style>
-        @import "../css/style.css";
-      </style>
-      <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
-      <p class="numeroPagina">${this.getProgress()}</p>
-      <p class="precio">${this.resultado} COP</p>
+        <style>
+          @import "../css/style.css";
+        </style>
+        <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
+        <p class="numeroPagina">${this.getProgress()}</p>
+        <p class="precio">${this.resultado} COP</p>
 
-      <div class="tarjetaContainer">
+        <div class="tarjetaContainer">
 
-        <div class="tituloTarjeta">
-          <h2>${pregunta.preguntaTitulo}</h2>
-        </div>
-
-        <div class="cargaDatos">
-          ${this.renderOpciones(this.subOpciones || pregunta.opciones)}
-        </div>
           
-      </div>
+            <h2>${pregunta.preguntaTitulo}</h2>
+          
+
+          <div class="cargaDatos">
+            ${this.renderOpciones(this.subOpciones || pregunta.opciones)}
+          </div>
+            
+        </div>
       `
       ;}
   }
