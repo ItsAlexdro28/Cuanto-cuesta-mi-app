@@ -132,6 +132,10 @@ class ComponentesCuestionario extends LitElement {
 
       <a href="./formulario.html" class="linkFormulario">Completa este formulario</a>
 
+      <page-form>
+        
+      </page-form>
+
     </section>
       `;
     } else {
@@ -160,4 +164,4 @@ class ComponentesCuestionario extends LitElement {
   }
 }
 
-customElements.define('preguntas-component', ComponentesCuestionario);      
+customElements.define('preguntas-component', ComponentesCuestionario);
