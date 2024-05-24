@@ -1,3 +1,3 @@
-import ('./recursos/matrizDatos.js');
-import ('./recursos/mostrarMatriz.js');
-import ('./recursos/formularios.js')
+import ('./src/recursos/matrizDatos.js');
+import ('./src/recursos/mostrarMatriz.js');
+import ('./src/recursos/formularios.js')
