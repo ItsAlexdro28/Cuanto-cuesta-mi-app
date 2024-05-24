@@ -37,9 +37,9 @@ class ComponentesCuestionario extends LitElement {
   async actualizarPrecioFinal(){
     try{
       this.resultado = await returnValor();
-      console.log(resultado)
+      //console.log(resultado)
     }catch(error){
-      console.log(error)
+      //console.log(error)
     }
 
   }
@@ -55,7 +55,7 @@ class ComponentesCuestionario extends LitElement {
       this.subOpciones = opcion.subOpciones; // Mostrar subopciones en lugar de avanzar
     } else {
       updateValue(this.indexCuestionario + 1, opcion.id);
-      console.log(updateValue)
+      //console.log(updateValue)
       this.actualizarPrecioFinal();
       this.indexCuestionario++;
       this.subOpciones = null; // Reiniciar subopciones
