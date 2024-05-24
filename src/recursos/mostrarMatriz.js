@@ -31,6 +31,7 @@ class ComponentesCuestionario extends LitElement {
   getLast() {
     if (this.indexCuestionario > 0) {
       deletePrevValue(this.indexCuestionario + 1);
+      this.actualizarPrecioFinal();
       this.indexCuestionario--;
     }
   }
