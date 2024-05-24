@@ -33,11 +33,11 @@ export class pageForm extends LitElement {
     render(){
         return html`
       <style>
-        @import "../src/css/style.css";
+        @import "../public/css/style.css";
       </style>
       <form class="customerForm">
         <div class="popup" id="popup">
-            <img src="../src/images/404-tick.png">
+            <img src="../public/images/404-tick.png">
             <h2> Gracias </h2>
             <p> Sus datos fueron guardados satisfactoriamente </p>
             <button type="button" class="ok-popup">OK</button>
@@ -66,7 +66,7 @@ export class pageForm extends LitElement {
                     <label for="phone" class="phone"><b>Telefono</b></label>
                     <input type="text" id="phone" name="phone">
                 </div>
-                <button type="button "class="intro-boton">Submit</button>
+                <button type="button "class="intro-boton" id="submit">Submit</button>
             </form>
     `}
     updated(){

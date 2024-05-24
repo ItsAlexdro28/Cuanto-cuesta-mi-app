@@ -38,6 +38,7 @@ class ComponentesCuestionario extends LitElement {
   async actualizarPrecioFinal(){
     try{
       this.resultado = await returnValor();
+      let resultado= this.resultado
       //console.log(resultado)
     }catch(error){
       //console.log(error)
@@ -87,11 +88,11 @@ class ComponentesCuestionario extends LitElement {
     if(this.enIncio){
       return html /*HTML*/ `
       <style>
-        @import "../src/css/style.css";
+        @import "../public/css/style.css";
       </style>
     <section id="pagina1">
       <div class="intro">
-          <img src="src/images/intro.png" class="imagen" id="imagen-intro">
+          <img src="public/images/intro.png" class="imagen" id="imagen-intro">
           <h1 class="titulo">¿Cuánto cuesta desarrollar mi <strong class="app">app</strong>?</h1>
           <h2 class="subtitulo">Calcula de forma rápida el costo para crear tu app, contestando estas sencillas preguntas.</h2>
           <button @click=${this.empezarCuestionario} class="intro-boton">EMPEZAR</button>
@@ -103,35 +104,35 @@ class ComponentesCuestionario extends LitElement {
     if (this.cuestionarioCompletado) {
       return html  /*HTML*/ `
       <style>
-        @import "../src/css/style.css";
+        @import "./public/css/style.css";
       </style>
       <section class="ultimaPagina">
       <p>Bien! ¡Hemos terminado!</p>
-      <h3>¡Compártenos si te ha gustado!</h3>
+      <h3 class="costoEnunciado">¡Compártenos si te ha gustado!</h3>
       <div class="redesSociales">
         <div id="facebook" class="red">
-          <img src="src/images/facebook-removebg-preview.png" class="icon">
+          <img src="public/images/facebook-removebg-preview.png" class="icon">
           <a href="https://www.facebook.com/?locale=es_LA">Share</a>
         </div>
         <div id="link" class="red">
-          <img src="src/images/LinkedIn.webp" class="icon">
+          <img src="public/images/LinkedIn.webp" class="icon">
           <a href="https://co.linkedin.com/">Share</a>
         </div>
         <div id="google" class="red">
-          <img src="src/images/google.png" class="icon">
-          <a href="https://www.google.com/?hl=es">Google +</a>
+          <img src="public/images/google.png" class="icon">
+          <a href="https://www.google.com/?hl=es">Google</a>
         </div>
         <div id="twitter" class="red">
-          <img src="src/images/twitter.webp" class="icon">
+          <img src="public/images/twitter.webp" class="icon">
           <a href="https://x.com/?lang=es">Tweet</a>
         </div>
 
       </div>
 
-      <h1>El costo estimado de tu app es</h1>
-      <h1 id="costo">${this.resultado}</h1>
+      <h1 class="costoEnunciado">El costo estimado de tu app es:</h1>
+      <h1 id="costo">${this.resultado.toLocaleString()}</h1>
 
-      <h2>Completa este formulario</h2>
+      <h2 class="formulario">Completa este formulario</h2>
 
       <page-form>
         
@@ -143,16 +144,16 @@ class ComponentesCuestionario extends LitElement {
       const pregunta = listaPreguntas[this.indexCuestionario];
       return html /*HTML*/ `
         <style>
-          @import "../src/css/style.css";
+          @import "../public/css/style.css";
         </style>
         <button @click=${() => this.getLast()} ?disabled=${this.indexCuestionario === 0} class="anteriorBoton">← Anterior</button>
         <p class="numeroPagina">${this.getProgress()}</p>
-        <p class="precio">${this.resultado} COP</p>
+        <p class="precio">${this.resultado.toLocaleString()} COP</p>
 
         <div class="tarjetaContainer">
 
           
-            <h2>${pregunta.preguntaTitulo}</h2>
+            <h2 class="tituloTarjeta">${pregunta.preguntaTitulo}</h2>
           
 
           <div class="cargaDatos">
